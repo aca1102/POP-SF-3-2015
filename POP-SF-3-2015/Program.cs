@@ -62,9 +62,19 @@ namespace POP_SF_3_2015
                 Sifra = "STO88GC",
             };
 
+            var n3 = new Namestaj()
+            {
+                Id = 3,
+                Cena = 777,
+                TipNamestaja = tp1,
+                Naziv = "Fotelja",
+                KolicinaUMagacinu = 168,
+                Sifra = "FTP552",
+            };
 
             Namestaj.Add(n1);
             Namestaj.Add(n2);
+            Namestaj.Add(n3);
             TipoviNamestaja.Add(tp1);
             TipoviNamestaja.Add(tp2);
 
