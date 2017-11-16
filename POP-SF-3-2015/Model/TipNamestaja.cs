@@ -6,12 +6,22 @@ using System.Threading.Tasks;
 
 namespace POP_SF_3_2015.Model
 {
-    class TipNamestaja
+    public class TipNamestaja
     {
         public int Id { get; set; }
 
         public string Naziv { get; set; }
 
-        public bool Obrisan { get; set; }
+        public TipNamestaja()
+        {
+
+        }
+
+        public TipNamestaja(int id, string naziv)
+        {
+            this.Id = id;
+            this.Naziv = naziv;
+            
+        }
     }
 }
