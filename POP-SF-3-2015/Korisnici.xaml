@@ -1,0 +1,51 @@
+﻿<Window x:Class="POP_SF_3_2015.Korisnici"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:POP_SF_3_2015"
+        mc:Ignorable="d"
+Title="Korisnici" Height="588.853" Width="750" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Button Name="bDodaj" Content="Dodaj" Margin="0,35,42,0" VerticalAlignment="Top" Click="bDodaj_Click" HorizontalAlignment="Right" Width="75"/>
+        <Button Name="bIzmeni" Content="Izmeni" Margin="0,80,42,0" VerticalAlignment="Top" Click="bIzmeni_Click" HorizontalAlignment="Right" Width="75"/>
+        <Button Name="bObrisi" Content="Obrisi" Margin="0,123,42,0" VerticalAlignment="Top" Click="bObrisi_Click" HorizontalAlignment="Right" Width="75"/>
+        <Button Name="bZatvori" Content="Zatvori" Margin="0,317,42,0" VerticalAlignment="Top" Click="bZatvori_Click" HorizontalAlignment="Right" Width="75"/>
+        <DataGrid Name="dgKorisnici" Margin="10,35,156,0" VerticalAlignment="Top" Height="83" SelectionChanged="lbKorisnici_SelectionChanged"/>
+        <GroupBox Name="groupBox" Header="Detalji korisnika" Height="93" Margin="10,244,156,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="33,268,0,0" TextWrapping="Wrap" Text="Korisnicko ime" VerticalAlignment="Top" Width="112"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="33,304,0,0" TextWrapping="Wrap" Text="Lozinka" VerticalAlignment="Top" Width="58"/>
+        <TextBox x:Name="textBox" Height="23" Margin="173,268,182,0" TextWrapping="Wrap" Text="{Binding ElementName=dgKorisnici, Path=SelectedItem.KorisnickoIme}" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox1" Height="23" Margin="173,304,182,0" TextWrapping="Wrap" Text="{Binding ElementName=dgKorisnici, Path=SelectedItem.Lozinka}" VerticalAlignment="Top"/>
+        <Expander x:Name="expander" Header="Pretraga" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Height="93" Width="363">
+            <Grid Background="#FFE5E5E5">
+                <TextBlock HorizontalAlignment="Left" Margin="127,10,0,0" TextWrapping="Wrap" Text="Unesite izraz za pretragu" VerticalAlignment="Top"/>
+                <TextBox Name="tbPretraga" HorizontalAlignment="Left" Height="23" Margin="10,37,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="341" TextChanged="tbPretraga_TextChanged"/>
+            </Grid>
+        </Expander>
+        <Menu HorizontalAlignment="Stretch" Height="20"  VerticalAlignment="Top">
+            <MenuItem Header="Korisnik">
+                <MenuItem Header="_Dodaj korisnika" Click="bDodaj_Click">
+                    <MenuItem.Icon>
+                        <Image Source="img/user.png" Height="20" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Izadji" Click="bZatvori_Click">
+                    <MenuItem.Icon>
+                        <Image Source="img/logout.png" Height="20" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Prikaz">
+                <MenuItem Header="Sortiraj po imenu" IsCheckable="True" IsChecked="True"/>
+                <MenuItem Header="Sortiraj po prezimenu"/>
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Name="miHelp" Header="Razvojni tim" Click="miHelp_Click_1"/>
+
+            </MenuItem>
+
+        </Menu>
+    </Grid>
+</Window>
