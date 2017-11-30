@@ -40,6 +40,7 @@ namespace POP_SF_3_2015
             Tipovi = new ObservableCollection<TipNamestaja>();
             TipoviKorisnika = new ObservableCollection<TipKorisnika>();
             UcitajKorisnike();
+            UcitajSalon();
 
         }
 
@@ -58,5 +59,13 @@ namespace POP_SF_3_2015
             Korisnici.Add(new Korisnik("Goran", "Zoranic", "456", new DateTime(1996, 5, 23), "s", "c", true, "cao", false));
 
         }
+
+        private void UcitajSalon()
+        {
+
+            Salon s = new Salon("Forma", "Bulevar Oslobodjenja 101", "063/123456", "acam@gmail.com", "faca.com", "789456123", "456789", "8974651");
+            Saloni.Add(s);
+        }
+
     }
 }

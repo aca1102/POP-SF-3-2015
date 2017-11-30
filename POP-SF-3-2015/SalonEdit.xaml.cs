@@ -1,5 +1,4 @@
-﻿using POP_SF_3_2015.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,38 +11,36 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using POP_SF_3_2015.Model;
+
 
 namespace POP_SF_3_2015
 {
     /// <summary>
-    /// Interaction logic for KorisniciEditWindow.xaml
+    /// Interaction logic for SalonEdit.xaml
     /// </summary>
     /// 
+    public enum MOD_SALON { DODAVANJE, IZMENA };
 
-    public enum MOD { DODAVANJE, IZMENA };
-
-    public partial class KorisniciEdit : Window
+    public partial class SalonEdit : Window
     {
-        protected Korisnik orginal, editO;
-        protected MOD mod;
-
-        public KorisniciEdit()
+        protected Salon orginal, editO;
+        protected MOD_SALON mod;
+        public SalonEdit()
         {
             InitializeComponent();
         }
 
-        public KorisniciEdit(Korisnik k, MOD m = MOD.DODAVANJE) : this()
+        public SalonEdit(Salon s, MOD_SALON m = MOD_SALON.DODAVANJE) : this()
         {
-            this.orginal = k;
+            this.orginal = s;
             this.mod = m;
-            cbTip.ItemsSource = Program.Instanca.TipoviKorisnika;
 
             this.DataContext = orginal;
 
-            if (mod == MOD.IZMENA)
+            if (mod == MOD_SALON.IZMENA)
             {
-
-                tbJmbg.IsEnabled = false;
+                tbAdresa.IsEnabled = false;
                 this.editO = orginal.DeepCopy();
                 this.DataContext = editO;
             }
@@ -55,17 +52,15 @@ namespace POP_SF_3_2015
 
         private void bSacuvaj_Click(object sender, RoutedEventArgs e)
         {
-            if (mod == MOD.DODAVANJE)
+            if (mod == MOD_SALON.DODAVANJE)
             {
-                Program.Instanca.Korisnici.Add(orginal);
-
+                Program.Instanca.Saloni.Add(orginal);
             }
             else
             {
                 orginal.SetProp(editO);
             }
-
-            this.DialogResult = true;   //zatvaramo u slucaju uspesnog rezultata
+            this.DialogResult = true;
             this.Close();
         }
 

@@ -39,5 +39,11 @@ namespace POP_SF_3_2015
             kw.Show();
         }
 
+        private void bSalon_Click(object sender, RoutedEventArgs e)
+        {
+            Saloni kw = new Saloni();
+            kw.Show();
+        }
+
     }
 }

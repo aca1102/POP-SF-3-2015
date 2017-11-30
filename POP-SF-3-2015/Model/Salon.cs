@@ -105,11 +105,6 @@ namespace POP_SF_3_2015.Model
             }
         }
 
-        public Salon()
-        {
-
-        }
-
         public Salon(string naziv, string adresa, string telefon, string email, string webAdresa, string pib, string maticniBr, string ziroRacun)
         {
             this.Naziv = naziv;
@@ -121,6 +116,12 @@ namespace POP_SF_3_2015.Model
             this.MaticniBroj = maticniBr;
             this.ZiroRacun = ziroRacun;
         }
+
+        public Salon()
+        {
+
+        }
+
 
         public override string ToString()
         {
