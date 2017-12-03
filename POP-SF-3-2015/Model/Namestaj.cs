@@ -105,7 +105,7 @@ namespace POP_SF_3_2015.Model
 
         }
 
-        public Namestaj(int id, string naziv, string sifra, double cena, int kolicinaUMagacinu, TipNamestaja tipNamestaja, Akcija akcija)
+        public Namestaj(int id, string naziv, string sifra, double cena, int kolicinaUMagacinu)
         {
 
             this.Id = id;
@@ -125,7 +125,7 @@ namespace POP_SF_3_2015.Model
 
         public Namestaj DeepCopy()
         {
-            Namestaj copy = new Namestaj(this.Id, this.Naziv, this.Sifra, this.Cena, this.KolicinaUMagacinu, this.TipNamestaja, this.Akcija);
+            Namestaj copy = new Namestaj(this.Id, this.Naziv, this.Sifra, this.Cena, this.KolicinaUMagacinu);
             return copy;
         }
 

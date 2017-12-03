@@ -26,12 +26,7 @@ namespace POP_SF_3_2015
             InitializeComponent();
 
         }
-        private void bLogin_Click(object sender, RoutedEventArgs e)
-        {
-            Korisnici kw = new Korisnici();
-            kw.Show();
-
-        }
+        
 
         private void bKorisnici_Click(object sender, RoutedEventArgs e)
         {
@@ -43,6 +38,13 @@ namespace POP_SF_3_2015
         {
             Saloni kw = new Saloni();
             kw.Show();
+        }
+
+        private void bNamestaj_Click(object sender, RoutedEventArgs e)
+        {
+            Namestaji kw = new Namestaji();
+            kw.Show();
+
         }
 
     }

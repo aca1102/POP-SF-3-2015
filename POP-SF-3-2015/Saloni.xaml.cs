@@ -106,7 +106,7 @@ namespace POP_SF_3_2015
 
         private void dgSalon_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (Program.Instanca.Korisnici.Count == 0)
+            if (Program.Instanca.Saloni.Count == 0)
             {
                 bIzmeni.IsEnabled = false;
             }

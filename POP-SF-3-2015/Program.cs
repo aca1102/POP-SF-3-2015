@@ -41,6 +41,7 @@ namespace POP_SF_3_2015
             TipoviKorisnika = new ObservableCollection<TipKorisnika>();
             UcitajKorisnike();
             UcitajSalon();
+            UcitajNamestaj();
 
         }
 
@@ -65,6 +66,20 @@ namespace POP_SF_3_2015
 
             Salon s = new Salon("Forma", "Bulevar Oslobodjenja 101", "063/123456", "acam@gmail.com", "faca.com", "789456123", "456789", "8974651");
             Saloni.Add(s);
+        }
+
+        private void UcitajNamestaj()
+        {
+
+            Tipovi.Add(new TipNamestaja("bracni", "bracni krevet"));
+            Tipovi.Add(new TipNamestaja("ugaona", "za sedenje"));
+            Tipovi.Add(new TipNamestaja("drveni", "trpezarijski"));
+
+            Namestaj n = new Namestaj(1, "krevet", "123", 500, 10);
+            Namestaji.Add(n);
+            Namestaji.Add(new Namestaj(2, "fotelja", "456", 400, 15));
+            Namestaji.Add(new Namestaj(3, "sto", "789", 600, 18));
+
         }
 
     }

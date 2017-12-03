@@ -55,6 +55,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Namestaji.xaml.cs">
+      <DependentUpon>Namestaji.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NamestajiEdit.xaml.cs">
+      <DependentUpon>NamestajiEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SalonEdit.xaml.cs">
       <DependentUpon>SalonEdit.xaml</DependentUpon>
     </Compile>
@@ -87,6 +93,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Namestaji.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NamestajiEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SalonEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
