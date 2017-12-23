@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using POP_SF_3_2015.DAO;
 
 namespace POP_SF_3_2015
 {
@@ -25,29 +26,24 @@ namespace POP_SF_3_2015
         public Korisnici()
         {
             InitializeComponent();
-            // OsveziKorisnike();
+
             bIzmeni.IsEnabled = false;
             bObrisi.IsEnabled = false;
 
-            //sprega izmedju kolekcije i komponenata
+
             cvs = new CollectionViewSource();
             cvs.Source = Program.Instanca.Korisnici;
             dgKorisnici.ItemsSource = cvs.View;
 
-            //sortiranje
+
             cvs.SortDescriptions.Add(new SortDescription("Ime", ListSortDirection.Ascending));
 
-            //filtriranje
-
-
-
-
-            // dgKorisnici.ItemsSource = Program.Instanca.Korisnici;   //odavde izvlaci podatke
-            //dgKorisnici.AutoGenerateColumns = true;
 
             dgKorisnici.IsReadOnly = true;
             dgKorisnici.SelectionMode = DataGridSelectionMode.Single;
             dgKorisnici.AutoGenerateColumns = false;
+
+
             DataGridTextColumn c = new DataGridTextColumn();
             c.Header = "Ime";
             c.Binding = new Binding("Ime");
@@ -72,6 +68,12 @@ namespace POP_SF_3_2015
             c.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             dgKorisnici.Columns.Add(c);
 
+            c = new DataGridTextColumn();
+            c.Header = "Tip korisnika";
+            c.Binding = new Binding("Tip.Naziv");
+            c.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgKorisnici.Columns.Add(c);
+
 
         }
 
@@ -80,18 +82,14 @@ namespace POP_SF_3_2015
             Korisnik k = e.Item as Korisnik;
             if (k != null)
             {
-                e.Accepted = k.Ime.ToLower().Contains(tbPretraga.Text.ToLower());  //iz textboxa izvlacimo
+                e.Accepted = (k.Ime.ToLower() + " " + k.Prezime.ToLower() + " " + k.KorisnickoIme.ToLower()).Contains(tbPretraga.Text.ToLower());
+
+
             }
+
         }
 
-        //private void OsveziKorisnike()
-        //{
-        //    lbKorisnici.Items.Clear();
-        //    foreach (Korisnik k in Aplikacija.Instanca.Korisnici)
-        //    {
-        //        lbKorisnici.Items.Add(k);
-        //    }
-        // }
+
 
         private void bDodaj_Click(object sender, RoutedEventArgs e)
         {
@@ -99,8 +97,15 @@ namespace POP_SF_3_2015
             KorisniciEdit kew = new KorisniciEdit(k);
             if (kew.ShowDialog() == true)
             {
-                //   OsveziKorisnike();
+
             }
+        }
+
+        private void bDodajTip_Click(object sender, RoutedEventArgs e)
+        {
+            TipKorisnika t = new TipKorisnika("direktor", "opis...");
+            Program.Instanca.TipoviKorisnika.Add(t);
+            TipKorisnikaDAO.Create(t);
         }
 
         private void bIzmeni_Click(object sender, RoutedEventArgs e)
@@ -110,7 +115,7 @@ namespace POP_SF_3_2015
             KorisniciEdit kew = new KorisniciEdit(k, MOD.IZMENA);
             if (kew.ShowDialog() == true)
             {
-                //  OsveziKorisnike();
+
             }
         }
 
@@ -118,8 +123,13 @@ namespace POP_SF_3_2015
         {
             if (MessageBox.Show("Da li ste sigurni?", "Potvrda brisanja", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
+                Korisnik k = dgKorisnici.SelectedItem as Korisnik;
+
+                KorisnikDAO.Delete(dgKorisnici.SelectedItem as Korisnik);
                 Program.Instanca.Korisnici.Remove(dgKorisnici.SelectedItem as Korisnik);
-                //  OsveziKorisnike();
+
+                KorisnikDAO.Delete(k);
+
             }
         }
 
@@ -140,7 +150,7 @@ namespace POP_SF_3_2015
                 bIzmeni.IsEnabled = true;
                 bObrisi.IsEnabled = true;
             }
-
+            
 
         }
 
@@ -153,8 +163,7 @@ namespace POP_SF_3_2015
 
         private void miHelp_Click_1(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Salon namestaja v0.1. Developer: Aleksandar Miladinovic");
+            MessageBox.Show("Skola jezika v0.1. Developer: Bojana Kusljic");
         }
-
     }
 }

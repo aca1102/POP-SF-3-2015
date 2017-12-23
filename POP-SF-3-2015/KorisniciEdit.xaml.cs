@@ -1,4 +1,5 @@
-﻿using POP_SF_3_2015.Model;
+﻿using POP_SF_3_2015.DAO;
+using POP_SF_3_2015.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,19 +32,16 @@ namespace POP_SF_3_2015
         {
             InitializeComponent();
         }
-
+        
         public KorisniciEdit(Korisnik k, MOD m = MOD.DODAVANJE) : this()
         {
             this.orginal = k;
             this.mod = m;
             cbTip.ItemsSource = Program.Instanca.TipoviKorisnika;
-
-            this.DataContext = orginal;
-
+            
             if (mod == MOD.IZMENA)
             {
 
-                tbJmbg.IsEnabled = false;
                 this.editO = orginal.DeepCopy();
                 this.DataContext = editO;
             }
@@ -55,18 +53,50 @@ namespace POP_SF_3_2015
 
         private void bSacuvaj_Click(object sender, RoutedEventArgs e)
         {
-            if (mod == MOD.DODAVANJE)
+            if (tbIme.Text != null && tbIme.Text != "" && tbPrezime.Text != null && tbPrezime.Text != "" && tbJmbg.Text != null && tbJmbg.Text != "" && tbKorisnickoIme.Text != null && tbKorisnickoIme.Text != "" && tbLozinka.Text != null && tbLozinka.Text != "" && cbTip.Text != null)
             {
-                Program.Instanca.Korisnici.Add(orginal);
+                if (mod == MOD.DODAVANJE)
+                {
+                    if (cbTip.Text == "admin")
+                    {
+                        orginal.Tip.Id = 1;
+                    }
+                    else
+                    {
+                        orginal.Tip.Id = 2;
+                    }
+                    Program.Instanca.Korisnici.Add(orginal);
+                    KorisnikDAO.Create(orginal);
+                }
+                else
+                {
+                    if (cbTip.Text == "admin")
+                    {
+                        editO.Tip.Id = 1;
+                        editO.Tip.Naziv = "admin";
+                    }
+                    else
+                    {
+                        editO.Tip.Id = 2;
+                        editO.Tip.Naziv = "Zaposleni";
+                    }
+                    orginal.SetProp(editO);
+                    KorisnikDAO.Update(orginal);
+                }
 
+                this.DialogResult = true;
+                this.Close();
             }
             else
             {
-                orginal.SetProp(editO);
+                MessageBox.Show(tbIme.Text);
+                MessageBox.Show(tbPrezime.Text);
+                MessageBox.Show(tbJmbg.Text);
+                MessageBox.Show(tbKorisnickoIme.Text);
+                MessageBox.Show(tbLozinka.Text);
+                MessageBox.Show(cbTip.Text);
+                MessageBox.Show("Niste uneli sve podatke!");
             }
-
-            this.DialogResult = true;   //zatvaramo u slucaju uspesnog rezultata
-            this.Close();
         }
 
         private void bOdustani_Click(object sender, RoutedEventArgs e)

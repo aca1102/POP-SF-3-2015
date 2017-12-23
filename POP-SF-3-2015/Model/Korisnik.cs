@@ -10,13 +10,7 @@ namespace POP_SF_3_2015.Model
     public class Korisnik : Osoba, INotifyPropertyChanged
     {
 
-        private long id;
-
-        public long Id
-        {
-            get { return id; }
-            set { id = value; }
-        }
+        public long Id { get; set; }
 
         private string korisnickoIme;
 
@@ -29,6 +23,8 @@ namespace POP_SF_3_2015.Model
                 OnPropertyChanged("KorisnickoIme");
             }
         }
+
+
 
         private string lozinka;
 
@@ -43,51 +39,37 @@ namespace POP_SF_3_2015.Model
 
         }
 
-        private int brTelefon;
+        //private int brTelefon;
 
-        public int BrTelefon
-        {
-            get { return brTelefon; }
-            set
-            {
-                brTelefon = value;
-                OnPropertyChanged("BrTelefona");
-            }
-        }
+        //public int BrTelefon
+        //{
+        //    get { return brTelefon; }
+        //    set
+        //    {
+        //        brTelefon = value;
+        //        OnPropertyChanged("BrTelefona");
+        //    }
+        //}
 
+        private TipKorisnika tip;
 
-        private bool tip;
-
-        public bool Tip
+        public TipKorisnika Tip
         {
             get { return tip; }
-            set
-            {
-                tip = value;
-                OnPropertyChanged("Tip");
-            }
+            set { tip = value; }
         }
 
-        private string nazivtip;
 
-        public string NazivTip
-        {
-            get { return nazivtip; }
-            set
-            {
-                nazivtip = value;
-                OnPropertyChanged("NazivTip");
-            }
-        }
+
 
 
         public Korisnik() : base()
         {
-            this.DatumRodjenja = DateTime.Today;
+
         }
 
 
-        public Korisnik(string ime, string prezime, string jmbg, DateTime datum, string kime, string loz, bool tip, string nazivtip, bool status) : base(ime, prezime, jmbg, datum, status)
+        public Korisnik(string ime, string prezime, string jmbg, DateTime datum, string kime, string loz, TipKorisnika tip) : base(ime, prezime, jmbg, datum)
         {
             this.KorisnickoIme = kime;
             this.Lozinka = loz;
@@ -106,12 +88,12 @@ namespace POP_SF_3_2015.Model
 
         public override string ToString()
         {
-            return base.ToString() + "\nKorisnicko ime: " + this.KorisnickoIme + "\nLozinka: " + this.Lozinka + "\nTip:" + this.Tip + "\n";
+            return base.ToString() + "\nKorisnicko ime: " + this.KorisnickoIme + "\nLozinka: " + this.Lozinka + "\n";
         }
 
         public Korisnik DeepCopy()
         {
-            Korisnik copy = new Korisnik(this.Ime, this.Prezime, this.JMBG, this.DatumRodjenja, this.KorisnickoIme, this.Lozinka, this.tip, "", this.Status);
+            Korisnik copy = new Korisnik(this.Ime, this.Prezime, this.JMBG, this.DatumRodjenja, this.KorisnickoIme, this.Lozinka, this.Tip);
             return copy;
         }
 
@@ -123,8 +105,11 @@ namespace POP_SF_3_2015.Model
             this.DatumRodjenja = k.DatumRodjenja;
             this.KorisnickoIme = k.KorisnickoIme;
             this.Lozinka = k.Lozinka;
-            this.Tip = k.tip;
-            this.Status = k.Status;
+            this.Tip = k.Tip;
         }
+
+
+
+
     }
 }

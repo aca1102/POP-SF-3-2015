@@ -55,6 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DAO\KorisnikDAO.cs" />
+    <Compile Include="DAO\TipKorisnikaDAO.cs" />
     <Compile Include="Namestaji.xaml.cs">
       <DependentUpon>Namestaji.xaml</DependentUpon>
     </Compile>
@@ -151,6 +153,13 @@
   <ItemGroup>
     <Resource Include="img\logout.png" />
     <Resource Include="img\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Db_scripts\createbase.sql" />
+    <Content Include="Db_scripts\seed.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

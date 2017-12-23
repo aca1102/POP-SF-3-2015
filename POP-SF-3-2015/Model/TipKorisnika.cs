@@ -10,9 +10,9 @@ namespace POP_SF_3_2015.Model
     public class TipKorisnika : INotifyPropertyChanged
     {
 
-        private int id;
+        private long id;
 
-        public int Id
+        public long Id
         {
             get { return id; }
             set

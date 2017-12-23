@@ -5,13 +5,13 @@ using System.Text;
 using POP_SF_3_2015.Model;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
-
+using POP_SF_3_2015.DAO;
 
 namespace POP_SF_3_2015
 {
     public class Program
     {
-        //public const string CONN_STR = @"data source = ACA; initial catalog = SalonNamestajaProjekat; integrated security = true";
+        public const string CONN_STR = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=POP;Integrated Security=True;";
 
         public ObservableCollection<Korisnik> Korisnici { get; set; }
         public ObservableCollection<Akcija> Akcije { get; set; }
@@ -39,7 +39,7 @@ namespace POP_SF_3_2015
             Prodaje = new ObservableCollection<Prodaja>();
             Tipovi = new ObservableCollection<TipNamestaja>();
             TipoviKorisnika = new ObservableCollection<TipKorisnika>();
-            UcitajKorisnike();
+
             UcitajSalon();
             UcitajNamestaj();
 
@@ -49,19 +49,19 @@ namespace POP_SF_3_2015
 
         private void UcitajKorisnike()
         {
+            KorisnikDAO.Read();
+            //    TipoviKorisnika.Add(new TipKorisnika("admin", "administrira celu aplikaciju"));
+            //    TipoviKorisnika.Add(new TipKorisnika("radnik", "ima pristup kursevima i ucenicima"));
+            //    TipoviKorisnika.Add(new TipKorisnika("menadzer", "ima pristup kursevima i uplatama"));
 
-            TipoviKorisnika.Add(new TipKorisnika("admin", "administrira celu aplikaciju"));
-            TipoviKorisnika.Add(new TipKorisnika("radnik", "ima pristup kursevima i ucenicima"));
-            TipoviKorisnika.Add(new TipKorisnika("menadzer", "ima pristup kursevima i uplatama"));
-
-            Korisnik k = new Korisnik("Aleksandar", "Miladinovic", "123", new DateTime(1996, 5, 12), "b", "k", true, "cao", false);
-            Korisnici.Add(k);
-            Korisnici.Add(new Korisnik("Zoran", "Peric", "312", new DateTime(1996, 2, 19), "n", "f", true, "cao", false));
-            Korisnici.Add(new Korisnik("Goran", "Zoranic", "456", new DateTime(1996, 5, 23), "s", "c", true, "cao", false));
+            //    Korisnik k = new Korisnik("Aleksandar", "Miladinovic", "123", new DateTime(1996, 5, 12), "b", "k", true, "cao", false);
+            //    Korisnici.Add(k);
+            //    Korisnici.Add(new Korisnik("Zoran", "Peric", "312", new DateTime(1996, 2, 19), "n", "f", true, "cao", false));
+            //    Korisnici.Add(new Korisnik("Goran", "Zoranic", "456", new DateTime(1996, 5, 23), "s", "c", true, "cao", false));
 
         }
 
-        private void UcitajSalon()
+    private void UcitajSalon()
         {
 
             Salon s = new Salon("Forma", "Bulevar Oslobodjenja 101", "063/123456", "acam@gmail.com", "faca.com", "789456123", "456789", "8974651");
@@ -82,5 +82,21 @@ namespace POP_SF_3_2015
 
         }
 
+        public TipKorisnika GetTipKorisnikaById(long id)
+        {
+            TipKorisnika retVal = null;
+            foreach (TipKorisnika t in this.TipoviKorisnika)
+            {
+                if (t.Id == id)
+                {
+                    retVal = t;
+                    break;
+                }
+            }
+            return retVal;
+        }
+
     }
 }
+
+

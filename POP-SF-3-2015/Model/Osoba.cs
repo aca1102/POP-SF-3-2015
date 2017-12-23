@@ -10,20 +10,6 @@ namespace POP_SF_3_2015.Model
     public class Osoba : INotifyPropertyChanged
     {
 
-
-        private bool status;
-
-        public bool Status
-        {
-            get { return status; }
-            set
-            {
-                status = value;
-                OnPropertyChanged("status");
-            }
-        }
-
-
         private string ime;
 
         public string Ime
@@ -49,7 +35,7 @@ namespace POP_SF_3_2015.Model
             }
         }
 
-
+        //public string JMBG { get; set; }
 
         private string jmbg;
 
@@ -80,17 +66,16 @@ namespace POP_SF_3_2015.Model
 
         public Osoba()
         {
-
+            this.DatumRodjenja = DateTime.Now;
         }
 
-        public Osoba(string ime, string prezime, string jmbg, DateTime datum, bool status)
+        public Osoba(string ime, string prezime, string jmbg, DateTime datum)
         {
 
             this.Ime = ime;
             this.prezime = prezime;
             this.JMBG = jmbg;
             this.DatumRodjenja = datum;
-            this.Status = status;
         }
 
         public virtual void func1()
