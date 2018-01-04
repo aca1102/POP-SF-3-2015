@@ -22,6 +22,9 @@ namespace POP_SF_3_2015
         public ObservableCollection<TipNamestaja> Tipovi { get; set; }
         public ObservableCollection<TipKorisnika> TipoviKorisnika { get; set; }
 
+        public Korisnik UlogovaniKorisnik { get; set; }
+
+
         private static Program instanca = new Program();
 
         public static Program Instanca
@@ -39,8 +42,8 @@ namespace POP_SF_3_2015
             Prodaje = new ObservableCollection<Prodaja>();
             Tipovi = new ObservableCollection<TipNamestaja>();
             TipoviKorisnika = new ObservableCollection<TipKorisnika>();
-
-            UcitajSalon();
+    
+            
             UcitajNamestaj();
 
         }
@@ -50,22 +53,12 @@ namespace POP_SF_3_2015
         private void UcitajKorisnike()
         {
             KorisnikDAO.Read();
-            //    TipoviKorisnika.Add(new TipKorisnika("admin", "administrira celu aplikaciju"));
-            //    TipoviKorisnika.Add(new TipKorisnika("radnik", "ima pristup kursevima i ucenicima"));
-            //    TipoviKorisnika.Add(new TipKorisnika("menadzer", "ima pristup kursevima i uplatama"));
-
-            //    Korisnik k = new Korisnik("Aleksandar", "Miladinovic", "123", new DateTime(1996, 5, 12), "b", "k", true, "cao", false);
-            //    Korisnici.Add(k);
-            //    Korisnici.Add(new Korisnik("Zoran", "Peric", "312", new DateTime(1996, 2, 19), "n", "f", true, "cao", false));
-            //    Korisnici.Add(new Korisnik("Goran", "Zoranic", "456", new DateTime(1996, 5, 23), "s", "c", true, "cao", false));
-
-        }
+            }
 
     private void UcitajSalon()
         {
 
-            Salon s = new Salon("Forma", "Bulevar Oslobodjenja 101", "063/123456", "acam@gmail.com", "faca.com", "789456123", "456789", "8974651");
-            Saloni.Add(s);
+            SalonDAO.Read();
         }
 
         private void UcitajNamestaj()

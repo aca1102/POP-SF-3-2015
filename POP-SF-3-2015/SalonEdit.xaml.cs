@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using POP_SF_3_2015.Model;
-
+using POP_SF_3_2015.DAO;
 
 namespace POP_SF_3_2015
 {
@@ -55,10 +55,12 @@ namespace POP_SF_3_2015
             if (mod == MOD_SALON.DODAVANJE)
             {
                 Program.Instanca.Saloni.Add(orginal);
+                SalonDAO.Create(orginal);
             }
             else
             {
                 orginal.SetProp(editO);
+                SalonDAO.Update(orginal);
             }
             this.DialogResult = true;
             this.Close();

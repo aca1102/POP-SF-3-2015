@@ -9,6 +9,19 @@ namespace POP_SF_3_2015.Model
 {
     public class Salon : INotifyPropertyChanged
     {
+
+        private string id;
+
+        public string Id
+        {
+            get { return id; }
+            set
+            {
+                id = value;
+                OnPropertyChanged("Id");
+            }
+        }
+
         private string naziv;
 
         public string Naziv
