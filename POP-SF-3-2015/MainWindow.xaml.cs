@@ -24,7 +24,13 @@ namespace POP_SF_3_2015
         public MainWindow()
         {
             InitializeComponent();
-
+            //if (Program.Instanca.UlogovaniKorisnik.Tip.Naziv != "admin")
+            //{
+            //    bKorisnici.Visibility = Visibility.Hidden;
+            //    bSalon.Visibility = Visibility.Hidden;
+            //    bNamestaj.Visibility = Visibility.Hidden;
+            //    //bAkcija.Visibility = Visibility.Hidden;
+            //}
         }
         
 
@@ -45,6 +51,12 @@ namespace POP_SF_3_2015
             Namestaji kw = new Namestaji();
             kw.Show();
 
+        }
+
+        private void bAkcija_Click(object sender, RoutedEventArgs e)
+        {
+            AkcijaWindow kw = new AkcijaWindow();
+            kw.Show();
         }
 
     }

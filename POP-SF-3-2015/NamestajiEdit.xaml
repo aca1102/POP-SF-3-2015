@@ -25,20 +25,22 @@
 
 
         </Grid.ColumnDefinitions>
-        <TextBlock HorizontalAlignment="Left" Margin="10" TextWrapping="NoWrap" Text="Nsziv" VerticalAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10" TextWrapping="NoWrap" Text="Naziv" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="1"  HorizontalAlignment="Left" Margin="10" TextWrapping="NoWrap" Text="Sifra" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="2"  HorizontalAlignment="Left" Margin="10" TextWrapping="NoWrap" Text="Cena" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="3"  HorizontalAlignment="Left" Margin="10" TextWrapping="NoWrap" Text="Kolicina u magacinu" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="4"  HorizontalAlignment="Left" Margin="10" TextWrapping="NoWrap" Text="Tip namestaja" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="5"  HorizontalAlignment="Left" Margin="10" TextWrapping="NoWrap" Text="Akcija" VerticalAlignment="Center"/>
 
         <TextBox Name="tbNaziv" Text="{Binding Path=Naziv}" Grid.ColumnSpan="2" Grid.Column="1" Height="22" Margin="10,14,0,14" TextWrapping="NoWrap" VerticalAlignment="Center" HorizontalAlignment="Left" Width="120"/>
         <TextBox Name="tbSifra" Text="{Binding Path=Sifra}" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="1" Height="22" Margin="10,14,0,14" TextWrapping="NoWrap" VerticalAlignment="Center" HorizontalAlignment="Left" Width="120"/>
         <TextBox Name="tbCena" Text="{Binding Path=Cena }" Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="1" Height="22" Margin="10,14,0,14" TextWrapping="NoWrap" VerticalAlignment="Center" HorizontalAlignment="Left" Width="120"/>
         <TextBox Name="tbKolicinaUMagacinu" Text="{Binding Path=KolicinaUMagacinu}" Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="1" Height="22" Margin="10,14,0,14" TextWrapping="NoWrap" VerticalAlignment="Center" HorizontalAlignment="Left" Width="120"/>
-        
+
         <Button Name="bSacuvaj"  Content="Sacuvaj" Grid.Column="1" Margin="10,13,0,0" Grid.Row="7" Click="bSacuvaj_Click" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="70" />
         <Button Name="bOdustani" Content="Odustani" Grid.Column="2" Margin="0,13,6,0" Grid.Row="7" Click="bOdustani_Click" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Width="80"/>
         <ComboBox Name="cbTipNamestaja" SelectedIndex="0" DisplayMemberPath="Naziv" SelectedItem="{Binding Path = TipNamestaja }" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Margin="10,16,0,0" Grid.Row="4" VerticalAlignment="Top" Width="120"/>
+        <ComboBox Name="cbAkcija" SelectedIndex="0" DisplayMemberPath="Popust" SelectedItem="{Binding Path = Akcija }" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="5" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 

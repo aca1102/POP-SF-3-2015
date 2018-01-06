@@ -74,7 +74,6 @@ namespace POP_SF_3_2015
             c.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             dgKorisnici.Columns.Add(c);
 
-
         }
 
         private void MyFilter(object sender, FilterEventArgs e)
@@ -163,7 +162,7 @@ namespace POP_SF_3_2015
 
         private void miHelp_Click_1(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Skola jezika v0.1. Developer: Bojana Kusljic");
+            MessageBox.Show("Salon Namestaja v0.1. Developer: Aleksandar Miladinovic");
         }
     }
 }

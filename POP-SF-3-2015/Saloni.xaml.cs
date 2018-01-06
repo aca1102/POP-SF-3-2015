@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using POP_SF_3_2015.Model;
 using System.ComponentModel;
+using POP_SF_3_2015.DAO;
 
 namespace POP_SF_3_2015
 {
@@ -33,11 +34,12 @@ namespace POP_SF_3_2015
             cvs.Source = Program.Instanca.Saloni;
             dgSalon.ItemsSource = cvs.View;
 
-            cvs.SortDescriptions.Add(new SortDescription("Ime", ListSortDirection.Ascending));
+            cvs.SortDescriptions.Add(new SortDescription("Naziv", ListSortDirection.Ascending));
 
             dgSalon.IsReadOnly = true;
             dgSalon.SelectionMode = DataGridSelectionMode.Single;
             dgSalon.AutoGenerateColumns = false;
+
             DataGridTextColumn c = new DataGridTextColumn();
             c.Header = "Naziv";
             c.Binding = new Binding("Naziv");
@@ -87,6 +89,16 @@ namespace POP_SF_3_2015
             dgSalon.Columns.Add(c);
         }
 
+        private void bDodaj_Click(object sender, RoutedEventArgs e)
+        {
+            Salon s = new Salon();
+            SalonEdit sew = new SalonEdit(s);
+            if (sew.ShowDialog() == true)
+            {
+
+            }
+        }
+
         private void bIzmeni_Click(object sender, RoutedEventArgs e)
         {
             Salon s = dgSalon.SelectedItem as Salon;
@@ -97,6 +109,20 @@ namespace POP_SF_3_2015
 
             }
 
+        }
+
+        private void bObrisi_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Da li ste sigurni?", "Potvrda brisanja", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                Salon s = dgSalon.SelectedItem as Salon;
+
+                SalonDAO.Delete(dgSalon.SelectedItem as Salon);
+                Program.Instanca.Saloni.Remove(dgSalon.SelectedItem as Salon);
+
+                SalonDAO.Delete(s);
+
+            }
         }
 
         private void bZatvori_Click(object sender, RoutedEventArgs e)

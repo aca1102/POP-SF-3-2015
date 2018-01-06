@@ -11,9 +11,9 @@ namespace POP_SF_3_2015.Model
     {
 
 
-        private int id;
+        private long id;
 
-        public int Id
+        public long Id
         {
             get { return id; }
             set
@@ -35,9 +35,9 @@ namespace POP_SF_3_2015.Model
             }
         }
 
-        private decimal popust;
+        private int popust;
 
-        public decimal Popust
+        public int Popust
         {
             get { return popust; }
             set
@@ -63,7 +63,7 @@ namespace POP_SF_3_2015.Model
 
         }
 
-        public Akcija(int id, DateTime datumPocetka, decimal popust, DateTime datumZavrsetka)
+        public Akcija(long id, DateTime datumPocetka, int popust, DateTime datumZavrsetka)
         {
 
             this.Id = id;

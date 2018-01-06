@@ -20,6 +20,9 @@ namespace POP_SF_3_2015
             TipKorisnikaDAO.Read();
             KorisnikDAO.Read();
             SalonDAO.Read();
+            AkcijaDAO.Read();
+            TipNamestajaDAO.Read();
+            NamestajDAO.Read();
         }
 
     }

@@ -44,7 +44,7 @@ namespace POP_SF_3_2015
             TipoviKorisnika = new ObservableCollection<TipKorisnika>();
     
             
-            UcitajNamestaj();
+            
 
         }
 
@@ -61,17 +61,16 @@ namespace POP_SF_3_2015
             SalonDAO.Read();
         }
 
+        private void UcitajAkciju()
+        {
+
+            AkcijaDAO.Read();
+        }
+
         private void UcitajNamestaj()
         {
 
-            Tipovi.Add(new TipNamestaja("bracni", "bracni krevet"));
-            Tipovi.Add(new TipNamestaja("ugaona", "za sedenje"));
-            Tipovi.Add(new TipNamestaja("drveni", "trpezarijski"));
-
-            Namestaj n = new Namestaj(1, "krevet", "123", 500, 10);
-            Namestaji.Add(n);
-            Namestaji.Add(new Namestaj(2, "fotelja", "456", 400, 15));
-            Namestaji.Add(new Namestaj(3, "sto", "789", 600, 18));
+            NamestajDAO.Read();
 
         }
 
@@ -83,6 +82,34 @@ namespace POP_SF_3_2015
                 if (t.Id == id)
                 {
                     retVal = t;
+                    break;
+                }
+            }
+            return retVal;
+        }
+
+        public TipNamestaja GetTipNamestajById(long id)
+        {
+            TipNamestaja retVal = null;
+            foreach (TipNamestaja o in this.Tipovi)
+            {
+                if (o.Id == id)
+                {
+                    retVal = o;
+                    break;
+                }
+            }
+            return retVal;
+        }
+
+        public Akcija GetTipAkcijaById(long id)
+        {
+            Akcija retVal = null;
+            foreach (Akcija p in this.Akcije)
+            {
+                if (p.Id == id)
+                {
+                    retVal = p;
                     break;
                 }
             }

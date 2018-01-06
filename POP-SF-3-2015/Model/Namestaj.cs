@@ -10,9 +10,9 @@ namespace POP_SF_3_2015.Model
     public class Namestaj : INotifyPropertyChanged
     {
 
-        private int id;
+        private long id;
 
-        public int Id
+        public long Id
         {
             get { return id; }
             set
@@ -49,9 +49,9 @@ namespace POP_SF_3_2015.Model
         }
 
 
-        private double cena;
+        private int cena;
 
-        public double Cena
+        public int Cena
         {
             get { return cena; }
             set
@@ -105,7 +105,7 @@ namespace POP_SF_3_2015.Model
 
         }
 
-        public Namestaj(int id, string naziv, string sifra, double cena, int kolicinaUMagacinu)
+        public Namestaj(long id, string naziv, string sifra, int cena, int kolicinaUMagacinu, TipNamestaja tipNamestaja, Akcija akcija)
         {
 
             this.Id = id;
@@ -125,7 +125,7 @@ namespace POP_SF_3_2015.Model
 
         public Namestaj DeepCopy()
         {
-            Namestaj copy = new Namestaj(this.Id, this.Naziv, this.Sifra, this.Cena, this.KolicinaUMagacinu);
+            Namestaj copy = new Namestaj(this.Id, this.Naziv, this.Sifra, this.Cena, this.KolicinaUMagacinu, this.TipNamestaja, this.Akcija);
             return copy;
         }
 

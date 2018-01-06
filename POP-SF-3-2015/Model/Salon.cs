@@ -10,9 +10,9 @@ namespace POP_SF_3_2015.Model
     public class Salon : INotifyPropertyChanged
     {
 
-        private string id;
+        private long id;
 
-        public string Id
+        public long Id
         {
             get { return id; }
             set

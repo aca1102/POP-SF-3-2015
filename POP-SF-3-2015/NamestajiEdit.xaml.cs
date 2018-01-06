@@ -1,4 +1,5 @@
-﻿using POP_SF_3_2015.Model;
+﻿using POP_SF_3_2015.DAO;
+using POP_SF_3_2015.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,8 @@ namespace POP_SF_3_2015
         protected Namestaj orginal, editO;
         protected MOD_NAMESTAJ mod;
 
+
+
         public NamestajiEdit()
         {
             InitializeComponent();
@@ -34,16 +37,20 @@ namespace POP_SF_3_2015
         {
             this.orginal = n;
             this.mod = m;
+
+
+
             cbTipNamestaja.ItemsSource = Program.Instanca.Tipovi;
+            cbAkcija.ItemsSource = Program.Instanca.Akcije;
 
             this.DataContext = orginal;
 
             if (mod == MOD_NAMESTAJ.IZMENA)
             {
-
-                tbCena.IsEnabled = false;
                 this.editO = orginal.DeepCopy();
                 this.DataContext = editO;
+                
+                
             }
             else
             {
@@ -56,11 +63,12 @@ namespace POP_SF_3_2015
             if (mod == MOD_NAMESTAJ.DODAVANJE)
             {
                 Program.Instanca.Namestaji.Add(orginal);
-
+                NamestajDAO.Create(orginal);
             }
             else
             {
                 orginal.SetProp(editO);
+                NamestajDAO.Update(orginal);
             }
 
             this.DialogResult = true;   //zatvaramo u slucaju uspesnog rezultata

@@ -17,6 +17,7 @@
         <Button Name="bKorisnici" Grid.ColumnSpan="2" Content="Korisnici" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Width="105" Click="bKorisnici_Click" Height="32"/>
         <Button Name="bSalon" Grid.ColumnSpan="2" Content="Salon" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top" Width="105" Click="bSalon_Click" Height="32"/>
         <Button Name="bNamestaj" Grid.ColumnSpan="2" Content="Namestaj" HorizontalAlignment="Left" Margin="10,140,0,0" VerticalAlignment="Top" Width="105" Click="bNamestaj_Click" Height="32"/>
+        <Button Name="bAkcija" Grid.ColumnSpan="2" Content="Akcija" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" Width="105" Click="bAkcija_Click" Height="32"/>
 
     </Grid>
 </Window>

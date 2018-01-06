@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using POP_SF_3_2015.DAO;
 
 namespace POP_SF_3_2015
 {
@@ -69,6 +70,20 @@ namespace POP_SF_3_2015
             c.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             dgNamestaji.Columns.Add(c);
 
+            c = new DataGridTextColumn();
+            c.Header = "Tip Namestaja";
+            c.Binding = new Binding("TipNamestaja.Naziv");
+            c.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgNamestaji.Columns.Add(c);
+
+            c = new DataGridTextColumn();
+            c.Header = "Akcija";
+            c.Binding = new Binding("Akcija.Popust");
+            c.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgNamestaji.Columns.Add(c);
+
+
+
 
         }
 
@@ -108,8 +123,13 @@ namespace POP_SF_3_2015
         {
             if (MessageBox.Show("Da li ste sigurni?", "Potvrda brisanja", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
+                Namestaj n = dgNamestaji.SelectedItem as Namestaj;
+
+                NamestajDAO.Delete(dgNamestaji.SelectedItem as Namestaj);
                 Program.Instanca.Namestaji.Remove(dgNamestaji.SelectedItem as Namestaj);
-                //  OsveziKorisnike();
+
+                NamestajDAO.Delete(n);
+
             }
         }
 

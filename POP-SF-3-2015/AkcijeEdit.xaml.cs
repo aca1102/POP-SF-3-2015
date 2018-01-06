@@ -1,4 +1,6 @@
-﻿using System;
+﻿using POP_SF_3_2015.DAO;
+using POP_SF_3_2015.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,8 +13,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using POP_SF_3_2015.Model;
-using POP_SF_3_2015.DAO;
 
 namespace POP_SF_3_2015
 {
@@ -20,25 +20,25 @@ namespace POP_SF_3_2015
     /// Interaction logic for SalonEdit.xaml
     /// </summary>
     /// 
-    public enum MOD_SALON { DODAVANJE, IZMENA };
+    public enum MOD_AKCIJA { DODAVANJE, IZMENA };
 
-    public partial class SalonEdit : Window
+    public partial class AkcijeEdit : Window
     {
-        protected Salon orginal, editO;
-        protected MOD_SALON mod;
-        public SalonEdit()
+        protected Akcija orginal, editO;
+        protected MOD_AKCIJA mod;
+        public AkcijeEdit()
         {
             InitializeComponent();
         }
 
-        public SalonEdit(Salon s, MOD_SALON m = MOD_SALON.DODAVANJE) : this()
+        public AkcijeEdit(Akcija a, MOD_AKCIJA m = MOD_AKCIJA.DODAVANJE) : this()
         {
-            this.orginal = s;
+            this.orginal = a;
             this.mod = m;
 
             this.DataContext = orginal;
 
-            if (mod == MOD_SALON.IZMENA)
+            if (mod == MOD_AKCIJA.IZMENA)
             {
                 this.editO = orginal.DeepCopy();
                 this.DataContext = editO;
@@ -51,15 +51,15 @@ namespace POP_SF_3_2015
 
         private void bSacuvaj_Click(object sender, RoutedEventArgs e)
         {
-            if (mod == MOD_SALON.DODAVANJE)
+            if (mod == MOD_AKCIJA.DODAVANJE)
             {
-                Program.Instanca.Saloni.Add(orginal);
-                SalonDAO.Create(orginal);
+                Program.Instanca.Akcije.Add(orginal);
+                AkcijaDAO.Create(orginal);
             }
             else
             {
                 orginal.SetProp(editO);
-                SalonDAO.Update(orginal);
+                AkcijaDAO.Update(orginal);
             }
             this.DialogResult = true;
             this.Close();

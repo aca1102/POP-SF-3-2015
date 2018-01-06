@@ -37,6 +37,7 @@ namespace POP_SF_3_2015
         {
             this.orginal = k;
             this.mod = m;
+            
             cbTip.ItemsSource = Program.Instanca.TipoviKorisnika;
             
             if (mod == MOD.IZMENA)

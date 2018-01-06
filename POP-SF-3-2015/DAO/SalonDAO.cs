@@ -28,6 +28,7 @@ namespace POP_SF_3_2015.DAO
                 foreach (DataRow row in ds.Tables["salon"].Rows)
                 {
                     Salon s = new Salon();
+                    s.Id = (long)Int32.Parse(row["Id"].ToString());
                     s.Naziv = (string)row["naziv"];
                     s.Adresa = (string)row["adresa"];
                     s.Telefon = (string)row["telefon"];
@@ -51,8 +52,9 @@ namespace POP_SF_3_2015.DAO
                 conn.Open();
 
                 SqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "insert into korisnik values (@naziv, @adresa, @telefon, @email, @web, @pib, @maticniBroj, @ziroRacun)";
+                cmd.CommandText = "insert into Salon (Naziv,Adresa,Telefon,Email,Web,Pib,MaticniBroj,ZiroRacun,Active) values (@naziv, @adresa, @telefon, @email, @web, @pib, @maticniBroj, @ziroRacun, @active)";
 
+                
                 cmd.Parameters.Add(new SqlParameter("@naziv", s.Naziv));
                 cmd.Parameters.Add(new SqlParameter("@adresa", s.Adresa));
                 cmd.Parameters.Add(new SqlParameter("@telefon", s.Telefon));
@@ -61,7 +63,7 @@ namespace POP_SF_3_2015.DAO
                 cmd.Parameters.Add(new SqlParameter("@pib", s.Pib));
                 cmd.Parameters.Add(new SqlParameter("@maticniBroj", s.MaticniBroj));
                 cmd.Parameters.Add(new SqlParameter("@ziroRacun", s.ZiroRacun));
-
+                cmd.Parameters.Add(new SqlParameter("@active", 1));
 
                 try
                 {
@@ -83,9 +85,9 @@ namespace POP_SF_3_2015.DAO
                 conn.Open();
 
                 SqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "update salon set naziv=@naziv, adresa=@adresa, telefon=@telefon, email=@email, web=@web, pib=@pib, maticniBroj=@maticniBroj, ziroRacun=@ziroRacun where naziv=@naziv";
+                cmd.CommandText = "update salon set naziv=@naziv, adresa=@adresa, telefon=@telefon, email=@email, web=@web, pib=@pib, maticniBroj=@maticniBroj, ziroRacun=@ziroRacun where Id=@id";
 
-
+                cmd.Parameters.Add(new SqlParameter("@id", s.Id));
                 cmd.Parameters.Add(new SqlParameter("@naziv", s.Naziv));
                 cmd.Parameters.Add(new SqlParameter("@adresa", s.Adresa));
                 cmd.Parameters.Add(new SqlParameter("@telefon", s.Telefon));
