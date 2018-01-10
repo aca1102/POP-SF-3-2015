@@ -28,7 +28,7 @@ namespace POP_SF_3_2015
         public Saloni()
         {
             InitializeComponent();
-            bIzmeni.IsEnabled = false;
+            
 
             cvs = new CollectionViewSource();
             cvs.Source = Program.Instanca.Saloni;
@@ -87,6 +87,11 @@ namespace POP_SF_3_2015
             c.Binding = new Binding("ZiroRacun");
             c.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             dgSalon.Columns.Add(c);
+
+            dgSalon.SelectedIndex = -1;
+            bIzmeni.IsEnabled = false;
+            bObrisi.IsEnabled = false;
+
         }
 
         private void bDodaj_Click(object sender, RoutedEventArgs e)
@@ -135,10 +140,12 @@ namespace POP_SF_3_2015
             if (Program.Instanca.Saloni.Count == 0)
             {
                 bIzmeni.IsEnabled = false;
+                bObrisi.IsEnabled = false;
             }
             else
             {
                 bIzmeni.IsEnabled = true;
+                bObrisi.IsEnabled = true;
             }
         }
     }

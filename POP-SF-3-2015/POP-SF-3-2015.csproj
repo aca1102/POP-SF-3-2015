@@ -62,8 +62,10 @@
       <DependentUpon>AkcijeEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="DAO\AkcijaDAO.cs" />
+    <Compile Include="DAO\DodatnaUslugaDAO.cs" />
     <Compile Include="DAO\KorisnikDAO.cs" />
     <Compile Include="DAO\NamestajDAO.cs" />
+    <Compile Include="DAO\ProdajaDAO.cs" />
     <Compile Include="DAO\SalonDAO.cs" />
     <Compile Include="DAO\TipKorisnikaDAO.cs" />
     <Compile Include="DAO\TipNamestajaDAO.cs" />
@@ -75,6 +77,12 @@
     </Compile>
     <Compile Include="NamestajiEdit.xaml.cs">
       <DependentUpon>NamestajiEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProdajaEdit.xaml.cs">
+      <DependentUpon>ProdajaEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProdajaWindow.xaml.cs">
+      <DependentUpon>ProdajaWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SalonEdit.xaml.cs">
       <DependentUpon>SalonEdit.xaml</DependentUpon>
@@ -125,6 +133,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="NamestajiEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProdajaEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProdajaWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -181,6 +197,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Db_scripts\createbase.sql" />
+    <Content Include="Db_scripts\filldatabase.sql" />
     <Content Include="Db_scripts\seed.sql" />
   </ItemGroup>
   <ItemGroup>

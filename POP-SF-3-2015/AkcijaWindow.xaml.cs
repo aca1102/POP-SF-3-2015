@@ -28,7 +28,7 @@ namespace POP_SF_3_2015
         public AkcijaWindow()
         {
             InitializeComponent();
-            bIzmeni.IsEnabled = false;
+           
 
             cvs = new CollectionViewSource();
             cvs.Source = Program.Instanca.Akcije;
@@ -59,7 +59,13 @@ namespace POP_SF_3_2015
             c.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             dgAkcije.Columns.Add(c);
 
+            dgAkcije.SelectedIndex = -1;
+            bIzmeni.IsEnabled = false;
+            bObrisi.IsEnabled = false;
+
         }
+
+
 
         private void bDodaj_Click(object sender, RoutedEventArgs e)
         {
@@ -107,10 +113,12 @@ namespace POP_SF_3_2015
             if (Program.Instanca.Akcije.Count == 0)
             {
                 bIzmeni.IsEnabled = false;
+                bObrisi.IsEnabled = false;
             }
             else
             {
                 bIzmeni.IsEnabled = true;
+                bObrisi.IsEnabled = true;
             }
         }
     }

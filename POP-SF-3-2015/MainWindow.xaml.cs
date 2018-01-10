@@ -24,13 +24,17 @@ namespace POP_SF_3_2015
         public MainWindow()
         {
             InitializeComponent();
-            //if (Program.Instanca.UlogovaniKorisnik.Tip.Naziv != "admin")
-            //{
-            //    bKorisnici.Visibility = Visibility.Hidden;
-            //    bSalon.Visibility = Visibility.Hidden;
-            //    bNamestaj.Visibility = Visibility.Hidden;
-            //    //bAkcija.Visibility = Visibility.Hidden;
-            //}
+            MessageBox.Show(Program.Instanca.UlogovaniKorisnik.Tip.Naziv);
+            if (Program.Instanca.UlogovaniKorisnik.Tip.Naziv != "admin")
+            {
+                bKorisnici.Visibility = Visibility.Hidden;
+                bSalon.Visibility = Visibility.Hidden;
+                bNamestaj.Visibility = Visibility.Hidden;
+                bAkcija.Visibility = Visibility.Hidden;
+            }else
+            {
+                bProdaja.Visibility = Visibility.Hidden;
+            }
         }
         
 
@@ -56,6 +60,12 @@ namespace POP_SF_3_2015
         private void bAkcija_Click(object sender, RoutedEventArgs e)
         {
             AkcijaWindow kw = new AkcijaWindow();
+            kw.Show();
+        }
+
+        private void bProdaja_Click(object sender, RoutedEventArgs e)
+        {
+            ProdajaWindow kw = new ProdajaWindow();
             kw.Show();
         }
 

@@ -41,16 +41,10 @@ create table DodatnaUsluga (
 	Id int primary key identity(1, 1),
 	Naziv varchar(50),
 	Cena numeric (9, 2),
-	Obrisan bit
+	active int
 )
 
-create table Akcija (
-	Id int primary key identity (1, 1),
-	DatumPocetka datetime,
-	Popust decimal,
-	DatumZavrsetka datetime,
-	obrisan bit
-)
+
 
 create table Salon (
 	Id int primary key identity (1, 1),
@@ -62,5 +56,17 @@ create table Salon (
 	Pib varchar (50),
 	MaticniBroj varchar (50),
 	ZiroRacun varchar (50),
+	active int 
+)
+
+create table Prodaja (
+	Id int primary key identity (1, 1),
+	Kupac varchar (50),
+	BrojRacuna varchar (50),
+	DatumProdaje  date,
+	NamestajId int,
+	DodatnaUslugaId int,
+	UkupnaCena decimal (10,2),
+	foreign key (DodatnaUslugaId) references DodatnaUsluga(Id),
 	active int 
 )

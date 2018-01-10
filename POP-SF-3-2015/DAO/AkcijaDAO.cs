@@ -20,7 +20,7 @@ namespace POP_SF_3_2015.DAO
                 conn.Open();
 
                 SqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "select * from akcija where active = 1";
+                cmd.CommandText = "select * from Akcija where active = 1 and DatumPocetka <= CONVERT (date, GETDATE()) and DatumZavrsetka >= CONVERT (date, GETDATE())";
 
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();

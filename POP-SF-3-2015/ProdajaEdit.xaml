@@ -1,0 +1,46 @@
+﻿<Window x:Class="POP_SF_3_2015.ProdajaEdit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:POP_SF_3_2015"
+        mc:Ignorable="d"
+        Title="ProdajaEdit" Height="597.391" Width="378.261">
+    <Grid Margin="0,0,0,-186">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="122"/>
+            <ColumnDefinition Width="113*"/>
+            <ColumnDefinition Width="135*"/>
+
+
+        </Grid.ColumnDefinitions>
+        <TextBlock  Grid.Row="1" HorizontalAlignment="Left" Margin="14,25,0,10" TextWrapping="NoWrap" Text="Kupac" VerticalAlignment="Center" Height="16" Width="32"/>
+        <TextBlock  Grid.Row="2" HorizontalAlignment="Left" Margin="10,26,0,9" TextWrapping="NoWrap" Text="Broj Racuna" VerticalAlignment="Center" Height="16" Width="63"/>
+        <TextBlock  Grid.Row="3" HorizontalAlignment="Left" Margin="14,22,0,13" TextWrapping="NoWrap" Text="Datum Prodaje" VerticalAlignment="Center" Height="16" Width="79"/>
+        <TextBlock  Grid.Row="4" HorizontalAlignment="Left" Margin="14,34,0,1" TextWrapping="NoWrap" Text="Namestaj" VerticalAlignment="Center" Height="16" Width="50"/>
+        <TextBlock  Grid.Row="4" HorizontalAlignment="Left" Margin="14,78,0,-48" TextWrapping="NoWrap" Text="Kolicina u magacinu" VerticalAlignment="Center" Height="21" Width="134" Grid.ColumnSpan="2"/>
+        <TextBlock  Grid.Row="4" HorizontalAlignment="Left" Margin="10,134,0,-99" TextWrapping="NoWrap" Text="Dodatna Usluga" VerticalAlignment="Center" Height="16" Width="85"/>
+        <TextBlock  Grid.Row="4" HorizontalAlignment="Left" Margin="10,181,0,-146" TextWrapping="NoWrap" Text="Ukupna Cena" VerticalAlignment="Center" Height="16" Width="71"/>
+
+
+        <TextBox Name="tbKupac" Text="{Binding Path = Kupac}" Grid.ColumnSpan="2" Grid.Column="1" Height="22" Margin="10,19,35,10" TextWrapping="NoWrap"  VerticalAlignment="Center" Grid.Row="1"/>
+        <TextBox Name="tbBrojRacuna" Text="{Binding Path = BrojRacuna}" Grid.ColumnSpan="2" Grid.Column="1" Height="22" Margin="10,26,35,3" TextWrapping="NoWrap"  VerticalAlignment="Center" Grid.Row="2"/>
+        <DatePicker Grid.Column="1" SelectedDate="{Binding Path = DatumProdaje}" HorizontalAlignment="Left" Margin="46,16,0,0" Grid.Row="3" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="120" Height="22"/>
+        <ComboBox Name="cbNamestaj" DisplayMemberPath="Naziv" SelectedItem="{Binding Path = Namestaj }" Grid.Column="1" HorizontalAlignment="Left" Margin="10,29,0,0" Grid.Row="4" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" Height="21" SelectionChanged="cbNamestaj_SelectionChanged"/>
+        <ComboBox Name="cbKolicinaUMagacinu"  Grid.Column="1" HorizontalAlignment="Left" Margin="70,78,0,-48" Grid.Row="4" VerticalAlignment="Top" Width="60" Height="21" RenderTransformOrigin="0.417,0.381" Grid.ColumnSpan="2"/>
+        <ComboBox Name="cbDodatnaUsluga" SelectedIndex="0" DisplayMemberPath="Naziv" SelectedItem="{Binding Path = DodatnaUsluga }" Grid.Column="1" HorizontalAlignment="Left" Margin="10,129,0,-99" Grid.Row="4" VerticalAlignment="Top" Width="120" Height="21" Grid.ColumnSpan="2"/>
+        <TextBox Name="tbUkupnaCena" Text="{Binding Path = UkupnaCena}" Grid.ColumnSpan="2" Grid.Column="1" Height="22" Margin="10,175,35,-146" TextWrapping="NoWrap"  VerticalAlignment="Center" Grid.Row="4"/>
+
+        <Button Name="bSacuvaj" Content="Prodaj" Margin="0,258,29,-229" Grid.Row="4" Click="bSacuvaj_Click" HorizontalAlignment="Right" Width="74" Grid.Column="1"/>
+        <Button Name="bOdustani" Content="Odustani" Grid.Column="2" Margin="0,258,50,-228" Grid.Row="4" Click="bOdustani_Click" HorizontalAlignment="Right" Width="75" />
+
+    </Grid>
+</Window>

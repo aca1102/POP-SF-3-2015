@@ -22,7 +22,9 @@ namespace POP_SF_3_2015
             SalonDAO.Read();
             AkcijaDAO.Read();
             TipNamestajaDAO.Read();
+            DodatnaUslugaDAO.Read();
             NamestajDAO.Read();
+            ProdajaDAO.Read();
         }
 
     }

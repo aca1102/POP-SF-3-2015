@@ -9,9 +9,9 @@ namespace POP_SF_3_2015.Model
 {
     public class Prodaja : INotifyPropertyChanged
     {
-        private int id;
+        private long id;
 
-        public int Id
+        public long Id
         {
             get { return id; }
             set
@@ -21,14 +21,14 @@ namespace POP_SF_3_2015.Model
             }
         }
 
-        private List<Namestaj> namestajZaProdaju;
+        private Namestaj namestaj;
 
-        public List<Namestaj> NamestajZaProdaju
+        public Namestaj Namestaj
         {
-            get { return namestajZaProdaju; }
+            get { return namestaj; }
             set
             {
-                namestajZaProdaju = value;
+                namestaj = value;
                 OnPropertyChanged("NamestajZaProdaju");
             }
         }
@@ -70,9 +70,9 @@ namespace POP_SF_3_2015.Model
             }
         }
 
-        private List<DodatnaUsluga> dodatnaUsluga;
+        private DodatnaUsluga dodatnaUsluga;
 
-        public List<DodatnaUsluga> DodatnaUsluga
+        public DodatnaUsluga DodatnaUsluga
         {
             get { return dodatnaUsluga; }
             set
@@ -81,7 +81,7 @@ namespace POP_SF_3_2015.Model
                 OnPropertyChanged("DodatnaUsluga");
             }
         }
-        public const double PDV = 0.02;
+        public const double PDV = 0.2;
 
 
         private double ukupnaCena;
@@ -101,11 +101,11 @@ namespace POP_SF_3_2015.Model
 
         }
 
-        public Prodaja(int id, List<Namestaj> namestajZaProdaju, DateTime datumProdaje, string brojRacuna, string Kupac, List<DodatnaUsluga> dodatnaUsluga, double ukupnaCena)
+        public Prodaja(long id, Namestaj namestaj, DateTime datumProdaje, string brojRacuna, string kupac, DodatnaUsluga dodatnaUsluga, double ukupnaCena)
         {
 
             this.Id = id;
-            this.NamestajZaProdaju = namestajZaProdaju;
+            this.Namestaj = namestaj;
             this.DatumProdaje = datumProdaje;
             this.BrojRacuna = brojRacuna;
             this.Kupac = kupac;
@@ -116,19 +116,19 @@ namespace POP_SF_3_2015.Model
 
         public override string ToString()
         {
-            return "Namestaj za prodaju: " + this.namestajZaProdaju + "\nDatum prodaje: " + this.datumProdaje + "\nBroj racuna: " + this.brojRacuna + "\nKupac: " + this.kupac + "\nDodatnaUsluga: " + this.dodatnaUsluga + "\nUkupnaCena: " + this.ukupnaCena;
+            return "Namestaj za prodaju: " + this.namestaj + "\nDatum prodaje: " + this.datumProdaje + "\nBroj racuna: " + this.brojRacuna + "\nKupac: " + this.kupac + "\nDodatnaUsluga: " + this.dodatnaUsluga + "\nUkupnaCena: " + this.ukupnaCena;
         }
 
         public Prodaja DeepCopy()
         {
-            Prodaja copy = new Prodaja(this.Id, this.NamestajZaProdaju, this.DatumProdaje, this.BrojRacuna, this.Kupac, this.DodatnaUsluga, this.UkupnaCena);
+            Prodaja copy = new Prodaja(this.Id, this.Namestaj, this.DatumProdaje, this.BrojRacuna, this.Kupac, this.DodatnaUsluga, this.UkupnaCena);
             return copy;
         }
 
         public void SetProp(Prodaja p)
         {
             this.Id = p.Id;
-            this.NamestajZaProdaju = p.NamestajZaProdaju;
+            this.Namestaj = p.Namestaj;
             this.DatumProdaje = p.DatumProdaje;
             this.BrojRacuna = p.BrojRacuna;
             this.Kupac = p.Kupac;

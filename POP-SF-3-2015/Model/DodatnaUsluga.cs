@@ -10,9 +10,9 @@ namespace POP_SF_3_2015.Model
     public class DodatnaUsluga : INotifyPropertyChanged
     {
 
-        private int id;
+        private long id;
 
-        public int Id
+        public long Id
         {
             get { return id; }
             set
@@ -34,9 +34,9 @@ namespace POP_SF_3_2015.Model
             }
         }
 
-        private double cena;
+        private int cena;
 
-        public double Cena
+        public int Cena
         {
             get { return cena; }
             set
@@ -51,7 +51,7 @@ namespace POP_SF_3_2015.Model
 
         }
 
-        public DodatnaUsluga(int id, string naziv, double cena)
+        public DodatnaUsluga(long id, string naziv, int cena)
         {
 
             this.Id = id;

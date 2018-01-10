@@ -27,8 +27,6 @@ namespace POP_SF_3_2015
         {
             InitializeComponent();
             // OsveziNamestaje();
-            bIzmeni.IsEnabled = false;
-            bObrisi.IsEnabled = false;
 
             //sprega izmedju kolekcije i komponenata
             cvs = new CollectionViewSource();
@@ -82,8 +80,9 @@ namespace POP_SF_3_2015
             c.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             dgNamestaji.Columns.Add(c);
 
-
-
+            dgNamestaji.SelectedIndex = -1;
+            bIzmeni.IsEnabled = false;
+            bObrisi.IsEnabled = false;
 
         }
 
@@ -100,6 +99,7 @@ namespace POP_SF_3_2015
 
         private void bDodaj_Click(object sender, RoutedEventArgs e)
         {
+            
             Namestaj n = new Namestaj();
             NamestajiEdit ne = new NamestajiEdit(n);
             if (ne.ShowDialog() == true)
@@ -140,7 +140,7 @@ namespace POP_SF_3_2015
 
         private void lbNamestaji_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (Program.Instanca.Namestaji.Count == 0)
+            if (Program.Instanca.Namestaji.Count == 0 || dgNamestaji.SelectedIndex == -1)
             {
                 bIzmeni.IsEnabled = false;
                 bObrisi.IsEnabled = false;
@@ -150,8 +150,6 @@ namespace POP_SF_3_2015
                 bIzmeni.IsEnabled = true;
                 bObrisi.IsEnabled = true;
             }
-
-
         }
 
         private void tbPretraga_TextChanged(object sender, TextChangedEventArgs e)

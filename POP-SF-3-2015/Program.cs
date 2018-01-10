@@ -55,7 +55,7 @@ namespace POP_SF_3_2015
             KorisnikDAO.Read();
             }
 
-    private void UcitajSalon()
+        private void UcitajSalon()
         {
 
             SalonDAO.Read();
@@ -64,13 +64,20 @@ namespace POP_SF_3_2015
         private void UcitajAkciju()
         {
 
-            AkcijaDAO.Read();
+           AkcijaDAO.Read();
         }
 
         private void UcitajNamestaj()
         {
 
             NamestajDAO.Read();
+
+        }
+
+        private void UcitajProdaju()
+        {
+
+            ProdajaDAO.Read();
 
         }
 
@@ -110,6 +117,46 @@ namespace POP_SF_3_2015
                 if (p.Id == id)
                 {
                     retVal = p;
+                    break;
+                }
+            }
+            if(retVal == null)
+            {
+                //retVal = new Akcija(0, new DateTime(), 0, new DateTime());
+                foreach (Akcija p in this.Akcije)
+                {
+                    if (p.Popust == 0)
+                    {
+                        retVal = p;
+                        break;
+                    }
+                }
+            }
+            return retVal;
+        }
+
+        public Namestaj GetNamestajById(long id)
+        {
+            Namestaj retVal = null;
+            foreach (Namestaj l in this.Namestaji)
+            {
+                if (l.Id == id)
+                {
+                    retVal = l;
+                    break;
+                }
+            }
+            return retVal;
+        }
+
+        public DodatnaUsluga GetDodatnaUslugaById(long id)
+        {
+            DodatnaUsluga retVal = null;
+            foreach (DodatnaUsluga u in this.Usluga)
+            {
+                if (u.Id == id)
+                {
+                    retVal = u;
                     break;
                 }
             }

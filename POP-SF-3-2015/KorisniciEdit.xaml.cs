@@ -54,8 +54,17 @@ namespace POP_SF_3_2015
 
         private void bSacuvaj_Click(object sender, RoutedEventArgs e)
         {
-            if (tbIme.Text != null && tbIme.Text != "" && tbPrezime.Text != null && tbPrezime.Text != "" && tbJmbg.Text != null && tbJmbg.Text != "" && tbKorisnickoIme.Text != null && tbKorisnickoIme.Text != "" && tbLozinka.Text != null && tbLozinka.Text != "" && cbTip.Text != null)
+            double myNum = 0;
+            if (tbIme.Text != null && tbIme.Text != "" && tbPrezime.Text != null && tbPrezime.Text != "" && Double.TryParse(tbJmbg.Text, out myNum) && tbJmbg.Text != "" && tbKorisnickoIme.Text != null && tbKorisnickoIme.Text != "" && tbLozinka.Text != null && tbLozinka.Text != "" && cbTip.Text != null)
             {
+                //if(myNum >0 && myNum < 100)
+                //{
+                //    //uspelo
+                //}
+                //else
+                //{
+                //    MessageBox.Show("nije popust dobar");
+                //}
                 if (mod == MOD.DODAVANJE)
                 {
                     if (cbTip.Text == "admin")

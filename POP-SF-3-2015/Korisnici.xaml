@@ -37,7 +37,7 @@ Title="Korisnici" Height="588.853" Width="750" ResizeMode="CanMinimize" WindowSt
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="Prikaz">
+            <MenuItem Header="Prikaz" >
                 <MenuItem Header="Sortiraj po imenu" IsCheckable="True" IsChecked="True"/>
                 <MenuItem Header="Sortiraj po prezimenu"/>
             </MenuItem>

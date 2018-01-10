@@ -27,8 +27,7 @@ namespace POP_SF_3_2015
         {
             InitializeComponent();
 
-            bIzmeni.IsEnabled = false;
-            bObrisi.IsEnabled = false;
+          
 
 
             cvs = new CollectionViewSource();
@@ -37,6 +36,7 @@ namespace POP_SF_3_2015
 
 
             cvs.SortDescriptions.Add(new SortDescription("Ime", ListSortDirection.Ascending));
+            
 
 
             dgKorisnici.IsReadOnly = true;
@@ -73,6 +73,11 @@ namespace POP_SF_3_2015
             c.Binding = new Binding("Tip.Naziv");
             c.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             dgKorisnici.Columns.Add(c);
+
+            dgKorisnici.SelectedIndex = -1;
+            bIzmeni.IsEnabled = false;
+            bObrisi.IsEnabled = false;
+
 
         }
 
@@ -164,5 +169,8 @@ namespace POP_SF_3_2015
         {
             MessageBox.Show("Salon Namestaja v0.1. Developer: Aleksandar Miladinovic");
         }
+
+        
+
     }
 }
